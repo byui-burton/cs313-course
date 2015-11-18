@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Team Readiness Activity</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>TEAM READINESS ACTIVITY</h1>
+        <h4>OBJECTIVE</h4>
+        <p>Consume a simple API using REST and no authentication in Java.</p>
+        <h4>INSTRUCTIONS</h4>
+        <p>For today's team activity, we will create a simple web application to search for movies,&nbsp;<a href="http://www.omdbapi.com/" target="_blank">using the API provided by Open Movie Database API</a>. You should have a JSP with a search box, and, upon submission, have a servlet that processes the search, calls the API, and displays a list of movies that match. As a stretch challenge, make each move a link, that if submitted, will query the API and return more detailed information about the movie.</p>
+        <h4>TEACH ONE ANOTHER</h4>
+        <p>The following Java libraries may come in handy in this exercise:</p>
+        <p><a href="http://wiki.fasterxml.com/JacksonHome" target="_blank">Jackson Library for Parsing JSON</a></p>
+        <p>You can include this as a dependency in your project by adding the following to your Maven pom.xml file:</p>
+        <p><span style="font-family: 'courier new', courier;">&lt;dependency&gt;</span>
+            <br /><span style="font-family: 'courier new', courier;">&nbsp; &lt;groupId&gt;com.fasterxml.jackson.core&lt;/groupId&gt;</span>
+            <br /><span style="font-family: 'courier new', courier;">&nbsp; &lt;artifactId&gt;jackson-databind&lt;/artifactId&gt;</span>
+            <br /><span style="font-family: 'courier new', courier;">&nbsp; &lt;version&gt;2.5.1&lt;/version&gt;</span>
+            <br /><span style="font-family: 'courier new', courier;">&lt;/dependency&gt;</span></p>
+        <p>Or, if you are not using Maven, download 3 JARS from:&nbsp;</p>
+        <p><a href="http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2.jar" target="_blank">http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.3.2/jackson-core-2.3.2.jar</a></p>
+        <p><a href="http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2.jar" target="_blank">http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.3.2/jackson-databind-2.3.2.jar</a></p>
+        <p><a href="http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.2/jackson-annotations-2.3.2.jar" target="_blank">http://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.3.2/jackson-annotations-2.3.2.jar</a></p>
+        <p>The following examples demonstrate the basics of how the Jackson library can be used.</p>
+        <p class="cd">import com.fasterxml.jackson.databind.ObjectMapper;</p>
+        <p class="cd">...</p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">URL url = new URL("http://www.omdbapi.com/?t=True%20Grit&amp;y=1969");</span></p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">ObjectMapper mapper = new ObjectMapper();</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">Map&lt;String, Object&gt; map = mapper.readValue(url, Map.class);</span></p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">for (String key : map.keySet())&nbsp;</span><span style="font-family: 'courier new', courier; font-size: 10pt;">{&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">&nbsp; &nbsp; &nbsp; System.out.println(key + ": " + map.get(key));</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">}</span></p>
+        <p>If your JSON result contains an array, you can then access the list, which may potentially have a bunch of Maps in it. For example:</p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">URL url = new URL("http://www.omdbapi.com/?s=Park");</span></p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">ObjectMapper mapper = new ObjectMapper();</span></p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">Map&lt;String, Object&gt; map = mapper.readValue(url, Map.class);</span></p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">List list = (List)map.get("Search");</span></p>
+        <p class="cd"><span style="font-family: 'courier new', courier; font-size: 10pt;">for (Object item : list)&nbsp;</span><span style="font-family: 'courier new', courier; font-size: 10pt;">{</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">&nbsp; &nbsp; &nbsp; Map&lt;String, Object&gt; innerMap = (Map&lt;String, Object&gt;)item;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">&nbsp; &nbsp; &nbsp; for (String key : innerMap.keySet())&nbsp;</span><span style="font-family: 'courier new', courier; font-size: 10pt;">{</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; System.out.println(key + ": " + innerMap.get(key));</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">&nbsp; &nbsp; &nbsp; }</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;">}</span></p>
+        <p>Be aware, there are some potential uncaught exceptions of casting to the wrong types in this code. It illustrates the basics, but you'll want to be very careful in your parsing.</p>
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Ponder and Prove</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>Deploy your application to OpenShift</h1>
+        <p>In order to deploy your application to OpenShift, you will need to create a new Java application gear. The free tier allows up to 3 free gears, so if you you are using Jenkins, PHP, and a gear to build applications, you will not have enough room, and will have to delete one of these.</p>
+        <p>Make sure you receive a score for your individual PHP project, before you delete that gear!</p>
+        <p>Once you have a free gear available:</p>
+        <p>1. Login to OpenShift and create a new application
+            <br />2. Select "Tomcat 7" as the type.
+            <br />3. Choose a name, for example, "java". Leave the source code git repository blank, select "no scaling", and then click "Create Application".
+            <br />4. This may take a few minutes while your Java application server is set up and configured.</p>
+        <p>
+            <br /><span style="font-size: 14pt;">Choose your own deployment adventure</span></p>
+        <p>At this point, you have two choices to make about how you will build and deploy your application.</p>
+        <p>1. Will you let OpenShift build the Java application from your source, or will you pre-build a WAR file (Java Web ARchive) and push that up?</p>
+        <p>2. Will you use Jenkins to pull from a GitHub repository or will you push your code directly from your development machine to Openshift.</p>
+        <p>The cool kids will choose to have OpenShift build the application from source using Jenkins. This is listed as Option #1 below. The nice thing about this approach is that you don't need to put any .war files into your Git repositories. These .war files contain the compiled version of code (which don't really belong in version control) and they will also contain the .jar files for the libraries we will use (which also don't really belon in version control). Also by using Jenkins, your deployments will happen automatically.</p>
+        <p>This type of build process is common for development and test servers, because the continuous integration server can run unit tests and make sure the project is always working as you expect. However, for actual deployments to staging and live servers, it is also common to build a .war file and deploy it. As mentioned above, usually this is not done via Git, but that is the way OpenShift uses to deploy files, so that is the way you do it if you choose to deploy a .war file.</p>
+        <p>Deploying a .war file directly to OpenShift (list below as Option #2) is probably more straightforward, and less error prone than Option #1, because there are fewer pieces involved. You simply build the .war file on your machine, and deploy it to the server. Please note that if you are behind a firewall that restricts the use of port 22 (e.g., on the BYU-Idaho campus may be doing this shortly), you cannot push directly to OpenShift, but will have to push your .war file to GitHub, and let Jenkins pull it down to your Java server (listed as Option #3) below. This is similar to Option #2, but because of the extra steps involved, it is likely a little more error prone.</p>
+        <p>For the purposes of this class, any of these options (or something else) is perfectly fine. The important thing is that you are able to deploy your application to the Web.</p>
+
+        <p>
+        	The following are instructions to help guide you through the option you choose:
+        	<br/><br/>
+        	<a href="313-08-prove_2-openshift-jenkins.html">Option #1 - Use Jenkins to build your Java app</a><br />
+        	<a href="313-08-prove_2-openshift-war.html">Option #2 - Build a WAR file and deploy it directly</a><br />
+        	<a href="313-08-prove_2-openshift-jenkins-war.html">Option #3 - Build a WAR file and let Jenkins deploy it</a>
+
+        </p>
+
+        <h2>ScreenCast</h2>
+        <p><a href="https://video.byui.edu/media/CS+313A+Hello+World+Servlet+%28Part+II%29/0_416ubgjz" target="_BLANK">This screencast</a> may also be helpful in setting this up.</p>
+        
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

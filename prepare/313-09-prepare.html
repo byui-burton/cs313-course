@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Preparation</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>PREPARATION<span style="font-family: verdana, geneva; font-size: 12pt; text-align: left;">&nbsp;</span></h1>
+        <p><span style="font-size: 12pt;">Before meeting with your groups, please go through the following preparation material:</span></p>
+        <ul style="font-family: verdana, geneva; font-size: 12pt;">
+            <li><a href="http://en.wikipedia.org/wiki/JavaServer_Pages" target="_blank">A basic overview of what JSPs are.</a></li>
+            <li>
+                <a href="http://en.wikipedia.org/wiki/JavaServer_Pages" target="_blank"></a><span style="font-size: 12pt;">This page is pretty dated, but it gives a&nbsp;</span><a href="http://en.wikibooks.org/wiki/Java_EE_Programming/JavaServer_Pages_Syntax" target="_blank">basic overview of JSPs and how they relate to servlets</a><span style="text-decoration: underline;"></span><span style="font-size: 12pt;">&nbsp;without getting too technical.</span></li>
+        </ul>
+        <p>Notice that the above links make heavy use of scriptlets (putting Java code between &lt;% and %&gt; tags). While I think this is helpful to see to understand what a JSP is and how it works, please be aware that the use of scriptlets is discouraged.&nbsp;<a href="http://stackoverflow.com/questions/3177733/how-to-avoid-java-code-in-jsp-files" target="_blank">See this page for an excellent discussion of why scriplets are discouraged and what the alternative approach is.</a></p>
+        <p>The standard JSTL core library discussed in the previous article does not come automatically with Tomcat, so you will need to download it and include it with your Web app to use the JSTL. <a href="http://central.maven.org/maven2/javax/servlet/jstl/1.2/jstl-1.2.jar" target="_blank">It can be downloaded from the Java site</a>&nbsp;and put in your WEB-INF/lib directory.</p>
+        <p>The following is a link to&nbsp;<a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnakh.html" target="_blank">more information about the Core tag library</a><span style="font-size: 12pt;">&nbsp;from the official Oracle tutorial.</span></p>
+        <p><b>Tutorials Similar to Your Assignment</b></p>
+        <p>There can be a lot to get your mind around with regard to servlets, JSPs, and how they work together. To help you see how they can work together, we have created a few tutorials. The first is a very simplistic application that computes a sum. The second is "Scripture Application" example that is a little bit more in depth, and discusses how we can use JSPs/Servlets in the MVC pattern.</p>
+        <p>For the first one, see:<span style="font-size: 12pt;">&nbsp;</span><a href="313-09-prepare_simple-tutorial.html">Simple JSP / Servlet Tutorial</a></p>
+        <p>The second tutorial is very similar to what you need to write for your weekly assignment and walking through it step by step will be a big help in getting this assignment done, especially if your Java is a little rusty. These will also be beneficial in preparing for your team activity, even though they are more in depth than what you will need to do for it. This tutorial is broken up into 3 parts:</p>
+        <p><a href="313-09-prepare_1-view-controller.html">Part One - Example: Scripture Application (Starting the View and the Controller)</a></p>
+        <p><a href="313-09-prepare_2-model.html">Part Two - Example: Scripture Application (Building a Model)</a></p>
+        <p><a href="313-09-prepare_3-data.html">Part Three - Example: Scripture Application (Adding new data and Parsing Files)</a>
+            <a></a>&nbsp;</p>
+        <p><b>Additional Material</b>&nbsp;</p>
+        <p>Here are links to the official JSP tutorials from Oracle. They are a little bit long and somewhat technical in parts, but can be a good resource for more information:</p>
+        <ul>
+            <li><a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html" target="_blank">JSPs</a><a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnakc.html" target="_blank">The JSTL</a></li>
+        </ul>
+        <p><b>Code Snippets</b></p>
+        <p>Here are a few helpful one liner code snippets that may come in handy:</p>
+        <p><b>Getting get/post variables in Servlets:</b></p>
+        <ul>
+            <li>
+                <p>String password = request.getParameter(&ldquo;password&rdquo;);</p>
+            </li>
+        </ul>
+        <p><b>Getting get/post variables in JSPs:</b></p>
+        <ul>
+            <li>
+                <p>This is a URL parameter: ${param.password}</p>
+            </li>
+        </ul>
+        <p><b>Setting a session variable in a Servlet:</b></p>
+        <ul>
+            <li>
+                <p>request.getSession().setAttribute(&ldquo;userId&rdquo;, &ldquo;test123&rdquo;);</p>
+            </li>
+        </ul>
+        <p><b>Getting a session variable in a JSP:</b></p>
+        <ul>
+            <li>
+                <p>This comes from the session: ${sessionScope.userId} or simply: ${userId}</p>
+            </li>
+        </ul>
+        <p><b>Transferring control from a servlet to a JSP to produce the content for the response:</b></p>
+        <ul>
+            <li>
+                <p>request.getRequestDispatcher(&ldquo;/myPage.jsp&rdquo;).forward(request, response);</p>
+            </li>
+        </ul>
+        <p><b>Getting the current directory of a servlet (on the server), and opening a file for output in that dir:</b></p>
+        <ul>
+            <li><span style="font-size: 12pt;">String path = getServletContext().getRealPath("/") + "filename.txt";</span></li>
+            <li><span style="font-size: 12pt;"></span><span style="font-size: 12pt;">BufferedWriter out = new BufferedWriter(new FileWriter(path));</span></li>
+        </ul>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Team Readiness Activity</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+
+        <h1>TEAM READINESS ACTIVITY</h1>
+        <p><span style="color: #1e669f; font-family: 'Times New Roman', verdana, geneva; font-size: 18pt; orphans: 2; widows: 2;">PREPARE</span></p>
+        <p>Each group member should read the preparation material before meeting with the team to ensure that the team meeting can be as efficient as possible.</p>
+        <p>Please note that the password_hash functions are available in PHP 5.5, but our OpenShift servers are only using PHP 5.4. There is a forward compatibility library available at: <a href="https://github.com/ircmaxell/password_compat/blob/master/lib/password.php" target="_blank">https://github.com/ircmaxell/password_compat/blob/master/lib/password.php</a></p>
+        <p>Download the contents of this php file, save it as a file "password.php" in your current directory, and then you can require and use this file just the same is if you were using PHP 5.5.</p>
+        <h4>TEACH ONE ANOTHER</h4>
+        <p>Your assignment is to create a simple login page and allow users to sign up with a new username and password.</p>
+        <h4>INSTRUCTIONS</h4>
+        <p dir="ltr">1. Create a simple database table for users with an ID, a username, and a password (to store hashed passwords).</p>
+        <p dir="ltr">2. Create three pages (described in more detail below), a homepage, a sign-in page, and a sign-up page. You may wish to create additional PHP pages to help in the processing of the submitted values.</p>
+        <p dir="ltr">3. Create a sign-up page that asks for a username and password, and then inserts this into the database.</p>
+        <ul>
+            <li>Don&rsquo;t insert the password directly into the database, use the password_hash() function to generate a hash of it, and insert that into the database.</li>
+            <li>After inserting the user, redirect to the sign-in page.</li>
+        </ul>
+        <p dir="ltr">For redirects, you can specify the new location in the header.</p>
+        <p dir="ltr">&nbsp;header(&lsquo;Location: &rsquo;.$newURL);</p>
+        <p dir="ltr">4. Create a sign-in page that prompts for a username and a password. (Make sure to use a password HTML element, rather than a text box).</p>
+        <ul>
+            <li>If a correct username/password is entered, save the user id to the session and redirect to the homepage.</li>
+            <li>If an incorrect username/password is entered, stay on this page.</li>
+            <li>Make sure to use the password_verify() function and compare against the hash in your database.</li>
+            <li>This page should have a link to the sign-up page.</li>
+        </ul>
+        <p dir="ltr">5. Create a &ldquo;homepage&rdquo; that checks for a current &ldquo;logged in&rdquo; user.</p>
+        <ul>
+            <li>If a user is found, display, &ldquo;Welcome [username]&rdquo; (where [username] is the current user&rsquo;s username.)</li>
+            <li>If no user is logged in, redirect to the sign-in page.</li>
+        </ul>
+        <h4>PROVE</h4>
+        <p>For this assignment, you will likely produce two to three PHP files. Each member should submit each of these to I-Learn. You need not submit your database.</p>
+        <p>As a stretch challenge, you may complete the following steps for extra credit:</p>
+        <p><b>Stretch Challenge 1:</b> Add two password boxes to the sign-up page, and ensure that they match before inserting. If they don&rsquo;t, stay on that page, but display a message in red, and put red asterisks next to the boxes.</p>
+        <p><b>Stretch Challenge 2:</b> Add to stretch challenge 1 the requirement that a password must be at least 7 characters and contain a number.</p>
+        <p><b>Stretch Challenge 3:</b> Add a client-side check for stretch challenges 1 and 2 to detect these conditions without requiring a page submission.</p>
+        <p>Please indicate in your submission comments if you completed the basic task, and which stretch goals you completed.</p>
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

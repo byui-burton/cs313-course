@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Team Readiness Activity</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>TEAM READINESS ACTIVITY</h1>
+        <p><h4>PREPARE</h4></p>
+        <p>Please make sure you go through the preparation material before meeting with your group, so that your time spent together can be as productive as possible. Also, please make sure you have an instance of MySQL on your development machine so that you can connect to it for this assignment.</p>
+        <h4>TEACH ONE ANOTHER</h4>
+        <p>For this activity, we will be using JDBC to connect to a MySQL database and display information in a Java web application.</p>
+        <p>Specifically, consider the case of a list of ancestors in a database. For simplicity, each person should have a first name, last name, and birthday. There should be a relationship between parents and children modeled in the database (many to many). Then on a web page, you should display a list of all the people in the database. Each name should be a link, where if you click on it, a person details page should be display that shows the person, along with their children (if they exist in the database) and their parents (if they exist in the database).</p>
+        <p>To achieve this goal, start working with the most basic components first, and then add the additional functionality. Consider the following steps:</p>
+        <ol>
+            <li>Ensure that you have MySQL installed on your development machine.</li>
+            <li>Create a Person table in the database.</li>
+            <li>Insert some test people.</li>
+            <li>Create a Java web application with a page to display each person in the database.</li>
+            <ol>
+                <li>Don't forget to include the JAR's for the JDBC connector, as well as the JSTL.</li>
+                <li>Write a simple query to select all the people from the database and return them.</li>
+            </ol>
+            <li>Make each name on this page a link to a &ldquo;Person Details&rdquo; page. At this point, have the Person Details page simply list the name and birthday of the person.</li>
+        </ol>
+        <h4>PROVE</h4>
+        <p>Please zip up and submit a copy of your JSPs and java files (servlets and any other classes) that you used for this assignment to I-Learn. Do not include any JARs with your submission.&nbsp;<span>Also&nbsp;</span><span>deploy your app to OpenShift and provide a link in the comment box of the submission.</span></p>
+        <p>As a stretch challenge, you may complete the following steps for extra credit.&nbsp;</p>
+        <p><b>Stretch Challenge 1:</b> Create a &ldquo;ChildOf&rdquo; table in the database to model the many-to-many relationship.</p>
+        <p><b>Stretch Challenge 2:</b> On the Person Details page, display the children of the current person.</p>
+        <p><b>Stretch Challenge 3:</b> On the Person Details page, display the ancestors of the current person.</p>
+        <p><span>If you complete any of the extra credit, please make sure to note it in your submission notes.</span></p>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

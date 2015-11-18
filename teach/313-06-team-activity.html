@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Team Readiness Activity</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+
+        <h1>TEAM READINESS ACTIVITY</h1>
+        <h4>PREPARE</h4>
+        <p>Each group member should read the preparation material before meeting with the team to ensure that the team meeting can be as efficient as possible.</p>
+        <h4>TEACH ONE ANOTHER</h4>
+        <p>Last week, we created a database to hold scriptures and a simple website to display them. This week, we will create a database that can hold scriptures and topics, and link scriptures to topics.</p>
+        <h5>INSTRUCTIONS:</h5>
+        <ol>
+            <li>Add to your scripture DB from last week. If you no longer have that database, please create a table for scriptures with columns for id, book, chapter, verse, and content.</li>
+            <li>Create a table called &ldquo;Topics&rdquo; with two columns: id and name;</li>
+            <li>Manually insert into this table the following topics:
+                <ol type="a">
+                    <li>Faith</li>
+                    <li>Sacrifice</li>
+                    <li>Charity</li>
+                </ol>
+            </li>
+            <li>There will be a many to many relationship between scriptures and topics, so you need to create another table to link scripture ids to topic ids (and include foreign keys).</li>
+            <li>Create a PHP page to insert a new scripture along with its topics. (Note that you are inserting a new scripture and adding a link to an existing topic, all in the same POST)
+                <ol type="a">
+                    <li>Show a text box for:
+                        <ol type="i">
+                            <li>Book</li>
+                            <li>Chapter</li>
+                            <li>Verse</li>
+                            <li>Content (The text of the scripture. A text area would probably be the best choice here).</li>
+                        </ol>
+                    </li>
+                    <li>Then have the PHP script generate checkboxes for each topic contained in the DB table.</li>
+                    <li>Have a submit button to insert the scripture into the database, and connect it to the selected topics.</li>
+                </ol>
+            </li>
+            <li>After submitting, you should show a page that lists all the scriptures in the database, each one with it's associated topics.</li>
+            <li>Using your PHP page, insert the following scriptures into the database along with the applicable topics:</li>
+            <ol type="a">
+                <li>Hebrews 11:4</li>
+                <li>1 Corinthians 13:13</li>
+                <li>Moroni 7:47</li>
+            </ol>
+        </ol>
+        <h4>PROVE</h4>
+        <p>For this assignment, you will likely produce two to three PHP files. <b>Each member should submit each of these to I-Learn.</b> You need not submit your database.</p>
+        <p>As a stretch challenge, you may complete the following steps for extra credit.</p>
+        <p><b>Stretch Challenge 1:</b> Create another checkbox at the end of the list, with an empty text box next to it. If the user selects this checkbox, add a new topic with the corresponding name to the database in addition to adding the scripture, and the link between them.</p>
+        <p><b>Stretch Challenge 2:</b> Have the list of previously entered scriptures along with their topics display on the same page as the &ldquo;new scripture entry&rdquo; portion described above. When a new scripture is entered, refresh the page to show the newly entered scripture along with the previous ones.</p>
+        <p><b>Stretch Challenge 3:</b> Complete Stretch Challenge 2 without causing a page refresh (i.e., use AJAX to complete the submission and update).</p>
+        <p>Please indicate in your submission comments if you completed the basic task, and which stretch goals you completed.</p>
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

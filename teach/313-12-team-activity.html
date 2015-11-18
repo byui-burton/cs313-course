@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Team Readiness Activity</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>TEAM READINESS ACTIVITY</h1>
+        <p><span style="color: #1e669f; font-family: 'Times New Roman', verdana, geneva; font-size: 18pt; orphans: 2; widows: 2;">PREPARE</span></p>
+        <p>Create a simple Java application that lists authors and the books they have written using JPA. For simplicity, we will assume that each book was only written by one author (but authors can write multiple books). Also, for simplicity, you may write this as a standalone Java application (not a web app).</p>
+        <h4>TEACH ONE ANOTHER</h4>
+        <h5>INSTRUCTIONS</h5>
+        <p>Using JPA, list all the authors in the DB with the books they have written. Then, using JPA, in your Java code, create a new author, and a new book written by that author, add them to the database, and show the list again.</p>
+        <p>To assist you in getting started, please follow these steps:</p>
+        <p><b>1. Create a new MySQL database for your authors:</b></p>
+        <p><span style="font-family: 'courier new', courier;">CREATE DATABASE library;</span></p>
+        <p><b>2. Create a new User with permissions in that library:</b>&nbsp;</p>
+        <p><span style="font-family: 'courier new', courier;">GRANT ALL PRIVILEGES on library.* TO 'libraryAdmin'@'localhost' IDENTIFIED BY 'libraryPass';</span>
+            <br /><span style="font-family: 'courier new', courier;">FLUSH PRIVILEGES;</span></p>
+        <p><b>3. Create tables for Authors and Books:</b></p>
+        <p><span style="font-family: 'courier new', courier;">USE library;</span>
+            <br /><span style="font-family: 'courier new', courier;">CREATE TABLE author (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(100) NOT NULL);</span>
+            <br /><span style="font-family: 'courier new', courier;">CREATE TABLE book (id INT PRIMARY KEY AUTO_INCREMENT, title VARCHAR(100) NOT NULL, author_id INT NOT NULL, FOREIGN KEY (author_id) REFERENCES author(id));</span></p>
+        <p><b>4. Insert a few rows into each table:</b></p>
+        <p>(Note that the second query here assumes that the first succeeded and gave the id of 1 to Mark Twain, and 2 to C.S. Lewis)</p>
+        <p><span style="font-family: 'courier new', courier;">INSERT INTO author (name) VALUES ("Mark Twain"), ("C.S. Lewis");</span>
+            <br /><span style="font-family: 'courier new', courier;">INSERT INTO book (title, author_id) VALUES ("Tom Sawyer", 1), ("Huckleberry Finn", 1), ("The Great Divorce", 2), ("Mere Cristianity", 2);</span></p>
+        <p><b>5. Verify the data in your database:</b></p>
+        <p><span style="font-family: 'courier new', courier;">SELECT * FROM author AS a INNER JOIN book AS b ON a.id = b.author_id;</span></p>
+        <p><b>6. Reference the JPA example:</b></p>
+        <p>Make sure to reference the JPA Example using Students/Majors from this week's preparation material, as it is very similar to your task here.</p>
+        <h4>PROVE</h4>
+        <p><span>Please zip up and submit a copy of your JSPs and java files (servlets and any other classes) that you used for this assignment to I-Learn. Do not include any JARs with your submission.</span></p>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

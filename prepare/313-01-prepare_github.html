@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Preparation</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>SETTING UP GITHUB</h1>
+        <h4>OVERVIEW</h4>
+        <div>
+            <p dir="ltr"><span>In this course we assume you already have basic experience with Git from your earlier courses. If you do not, you will still be ok, but you will need to come up to speed on your own. Here is a <span>tutorial that gives a good introduction to the subject:&nbsp;</span><span></span><a href="https://www.youtube.com/watch?v=0fKg7e37bQE" target="_blank">https://www.youtube.com/watch?v=0fKg7e37bQE</a>&nbsp;and here is a link to some good documentation:&nbsp;<a href="http://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank" title="http://git-scm.com/book/en/v2/Getting-Started-Git-Basics">http://git-scm.com/book/en/v2/Getting-Started-Git-Basics</a>&nbsp;.
+                <a href="https://www.youtube.com/watch?v=0fKg7e37bQE" target="_blank"></a>
+                </span>
+            </p>
+            <p dir="ltr"><span>In order to share our code with one another (so we can get ideas from each other) and also, to make the code available to the instructor for feedback, we also want to push our code to a public repository. (Also, later in the semester, we will be working on team projects and this will facilitate sharing code with teammates.)</span></p>
+            <p dir="ltr"><span>Thus, we are going to set up a public repository at GitHub and configure our server to automatically pull and deploy changes when they are committed to GitHub.</span></p>
+            <h2>INSTRUCTIONS</h2>
+            <div>
+                <p dir="ltr">The following steps will help you set up a GitHub repository and push a simple Hello World page to it. (These assume you are using the command line for Git; you are welcome to use a GUI if you would like, but it will not be discussed here.):</p>
+                <ol>
+                    <li><span>Go to GitHub.com and sign up for a new account if you haven't already.</span></li>
+                    <li><span>On GitHub, create a new repository, and choose a name for it (e.g., cs313php).</span></li>
+                    <li><span><span>After creating the repository, it should give you a URL to use, for example:&nbsp;</span><span>https://github.com/sburton42/cs313php.git</span></span>
+                    </li>
+                    <li><span>On the command line (GitBash on Windows), change to parent directory of where you want project to be.</span></li>
+                    <li><span>Clone your new (likely empty) repository, e.g. "git clone https://github.com/sburton42/cs313php.git" (substituting your own username and repository name of course)</span></li>
+                    <li><span>This should create a subdirectory with the same name as your repository. Change into that directory.</span></li>
+                    <li><span>Create a new index.html page in this directory with your editor of choice. This is a simple page that just needs to display "Hello World".</span></li>
+                    <li><span>Now add your page to your local git repository, commit it, and push it to GitHub. For example:</span></li>
+                    <ol>
+                        <li><span>git add index.html</span></li>
+                        <li><span>git commit -m "adding hello world page"</span></li>
+                        <li><span>git push origin master</span></li>
+                    </ol>
+                    <li><span>Verify that your code is at GitHub, by browsing to the repository on GitHub.com.</span></li>
+                </ol><span>The next step is to set up your OpenShift server and connect it to GitHub. See:&nbsp;<a href="313-01-prepare_openshift.html">Setting Up OpenShift</a><a></a></span></div>
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

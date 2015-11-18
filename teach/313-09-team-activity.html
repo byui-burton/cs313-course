@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Team Readiness Activity</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+
+
+        <h1>TEAM READINESS ACTIVITY</h1>
+        <h4>PREPARE</h4>
+        <p>Before doing this activity, each student should read the weekly preparation material to ensure that the team meeting is as efficient and effective as possible.</p>
+        <h4>TEACH ONE ANOTHER</h4>
+        <p><b>OBJECTIVE:&nbsp;</b><span style="font-size: 12pt;">Be able to use servlets and JSPs together to accomplish a simple task.</span></p>
+        <p><b>OVERVIEW:&nbsp;</b><span style="font-size: 12pt;">Create a login page (JSP) that accepts a username and password. If a correct username and password is entered, it should direct the user to a &ldquo;welcome page&rdquo; showing their username. If an incorrect username and password are entered, it should direct them to an &ldquo;incorrect password&rdquo; page.</span></p>
+        <p><b>INSTRUCTIONS:</b></p>
+        <p>Create a JSP login page with a username and password box. Submission of the form should post to a login servlet.</p>
+        <ol>
+            <li>Create a login servlet to check for a valid username and password (for the first pass a correct username and password can be hard coded into the servlet's code). If the username and password match, put the username on the session and send the user to a welcome page, if not send them to an incorrect login page.</li>
+            <li>Create a JSP incorrect login page.</li>
+            <li>Create a JSP welcome page that says &ldquo;Welcome [username].&rdquo; Also have a link to logout, this should post to a logout servlet.</li>
+            <li>Create a logout servlet that removes the username from the session if present, and sends the user back to the login page.</li>
+        </ol>
+        <h4>PROVE</h4>
+        <p>Zip up your JSPs and servlets and submit them via I-Learn. You also need to submit the url to your website and a password and username combination that will allow the instructor to test your log in page.&nbsp;<span style="font-size: 12pt;">As a stretch challenge, you may complete the following steps for extra credit.</span></p>
+        <div>
+            <p dir="ltr"><b>Stretch Challenge 1:</b>&nbsp;C<span>ombine the incorrect login page with the sign in page. So that it is only one page, but the presence of extra data causes it to display an incorrect login message before the username and password boxes. This can be done by having the servlet store information on the request before transferring to the JSP.</span></p>
+            <p><b>Stretch Challenge 2:</b>&nbsp;Deploy your app to one of your servers.</p>
+            <p dir="ltr"><b>Stretch Challenge 3:</b>&nbsp;Store a list of usernames and passwords in a file on the server and use that to validate in your login servlet.</p>
+            <p dir="ltr"><span>If you complete any of the extra credit, please make sure to note it in your submission notes in I-Learn.</span></p>
+        </div>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

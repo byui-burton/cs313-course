@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Ponder and Prove</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+
+        <h1>Option #1&nbsp;</h1>
+        <p>Option #1 - Have OpenShift build your application using Jenkins.</p>
+        <p>1. After creating the Tomcat 7 gear out at OpenShift, on the Application page, click "Enable Jenkins". This will use your same Jenkins server that you set up for PHP, and will create a second project on it to build your Java app.</p>
+        <p>2. Create a new GitHub repository for your project.</p>
+        <p>3. In NetBeans, browse to your "pom.xml" file in the very root of the application, this is your Maven build file. At the end of the xml file (right before the &lt;/project&gt; tag), add the following:</p>
+        <p><span style="font-family: 'courier new', courier; font-size: 10pt;">&lt;profiles&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;profile&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;!-- When built in OpenShift the 'openshift' profile will be used when </span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> invoking mvn. --&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;!-- Use this profile for any OpenShift specific customization your app </span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> will need. --&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;!-- By default that is to put the resulting archive into the 'webapps' </span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> folder. --&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html --&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;id&gt;openshift&lt;/id&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;build&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;finalName&gt;java&lt;/finalName&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;plugins&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;plugin&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;version&gt;2.1.1&lt;/version&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;configuration&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;outputDirectory&gt;webapps&lt;/outputDirectory&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;warName&gt;ROOT&lt;/warName&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;/configuration&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;/plugin&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;/plugins&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;/build&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;/profile&gt;</span>
+            <br /><span style="font-family: 'courier new', courier; font-size: 10pt;"> &lt;/profiles&gt;</span></p>
+        <p>OpenShift will use this profile to build your application when it is deployed.</p>
+        <p>4. Create a new empty repository for your application at GitHub, and commit and push it out there. You can use the NetBeans Team menu to facilitate this. First, select Team -&gt; Git -&gt; Initialize Repository to set up a local repository. Then, make sure you have the root of the project select, and select Team -&gt; Add, followed by a Team -&gt; Commit. Finally, select Team -&gt; Remote -&gt; Push..., and fill out the information for your GitHub repo.</p>
+        <p>5. In order to make sure OpenShift is going to use the right version of Java, we need to create an empty file in a specific directory under the root of our project called, "java7". It needs to be in the ".openshift/markers/" directory. It is probably easiest to do this from a command line / file explorer, rather than in NetBeans. Then add, commit, and push.</p>
+        <p>6. Log into your Jenkins server, select the new java build project, and go to its configuration page. Change the Git repository URL to be the GitHub URL.</p>
+        <p>7. Click build now, and with any luck, this will cause a build that will pull your source and deploy it on your new server. The first build may take a long time.</p>
+        <p>8. Verify your build, by going to the URL of your application. First check the base URL, (e.g. "http://java-sburton.rhcloud.com/"), which should give you the index.html Hello World page. Then, check your servlet (e.g., "http://java-sburton.rhcloud.com/HelloServlet").</p>
+        <p>9. Once you have verified that your building is working, you can set up the hooks to have GitHub trigger the build automatically just like you did for your PHP project.</p>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
