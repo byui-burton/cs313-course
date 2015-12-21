@@ -11,12 +11,12 @@
         <div id="content">
 
 
-        <h1>JSP DISCUSSION THREAD</h1>
-        <h4>OBJECTIVE</h4>
+        <h1>Jsp Discussion Thread</h1>
+        <h2>Objective</h2>
         <p>The objective for this assignment is to become more familiar with JSPs and Servlets.</p>
-        <h4>OVERVIEW</h4>
-        <p>Create a simple discussion forum where a user must login and then can post comments to a growing list. Store your usernames and passwords in a file on the server and store the posts in another file. Posts should be displayed in reverse chronological order (i.e., most recent at the top). You do not need to worry about creating a &ldquo;sign up&rdquo; page or anything of that nature.</p>
-        <h4>INSTRUCTIONS</h4>
+        <h2>Overview</h2>
+        <p>Create a simple discussion forum where a user must login and then can post comments to a growing list. Store your usernames and passwords in a file on the server and store the posts in another file. Posts should be displayed in reverse chronological order (i.e., most recent at the top). You do not need to worry about creating a "sign up" page or anything of that nature.</p>
+        <h2>Instructions</h2>
         <p>You should have the following pages:</p>
         <ul>
             <li>Sign in</li>
@@ -26,22 +26,22 @@
         </ul>
         <p>The interaction should be as follows:</p>
         <ul>
-            <li>From the&nbsp;&ldquo;Sign in&rdquo; page</li>
+            <li>From the "Sign in" page</li>
             <ul>
                 <li>Successful login: Redirect to new post page</li>
                 <li>Unsuccessful login: Redirect to invalid login page</li>
             </ul>
-            <li>From the &ldquo;Invalid login&rdquo; page</li>
+            <li>From the "Invalid login" page</li>
             <ul>
                 <li>Display a message about the failed login</li>
                 <li>Have a link back to the sign in page</li>
             </ul>
-            <li>From the &ldquo;Enter new post page&rdquo;</li>
+            <li>From the "Enter new post page"</li>
             <ul>
                 <li>Have a link to go directly to the view posts page (without entering a post)</li>
                 <li>Have a text area with and a submit button. Upon submission, redirect to the view posts page.</li>
             </ul>
-            <li>From the &ldquo;View posts&rdquo; page</li>
+            <li>From the "View posts" page</li>
             <ul>
                 <li>Display all the posts that have been submitted in reverse order.</li>
                 <li>Posts should display the username that generated them, the time created, and the content of the post.</li>
@@ -50,19 +50,17 @@
         </ul>
         <p>To handle this interaction, you should have at least two servlets:</p>
         <ol>
-            <li>A&nbsp;&ldquo;Sign in&rdquo; servlet. This servlet should validate the username and password and then transfer to either the new post page, or the invalid login page.</li>
-            <li>A&nbsp;&ldquo;Create post&rdquo; servlet. This servlet should accept a new post, save it to the file and then transfer to the view posts page.</li>
-            <li>You may additionally want to have a &ldquo;Load posts&rdquo; servlet that would load the posts from the file, and save them to memory, and then transfer control to the&ldquo;View Posts&rdquo; JSP to display them.&nbsp;In other words, you should use these servlets as your controllers, and have the JSP&rsquo;s simply function as views, in the MVC pattern.</li>
+            <li>A "Sign in" servlet. This servlet should validate the username and password and then transfer to either the new post page, or the invalid login page.</li>
+            <li>A "Create post" servlet. This servlet should accept a new post, save it to the file and then transfer to the view posts page.</li>
+            <li>You may additionally want to have a "Load posts" servlet that would load the posts from the file, and save them to memory, and then transfer control to the"View Posts" JSP to display them. In other words, you should use these servlets as your controllers, and have the JSP's simply function as views, in the MVC pattern.</li>
         </ol>
-        <h4>FILE FORMAT</h4>
+        <h2>File Format</h2>
         <p>You may format the files however you like.</p>
-        <h4>SUBMISSION</h4>
+        <h2>Submission</h2>
         <p>1. Deploy your web application to your server, and add a link from your homepage.</p>
         <p>2. Push your source code to your Git repository.</p>
-        <p>3. Submit to I-Learn a username and password to use for login. (This is also your way of communicating that you have completed the assignment)</p>
-
-
-
+        <p>3. Download the <a href="313-submission-form.pdf" target="_BLANK">CS 313 Submission Form PDF</a>, fill it out, and submit it to I-Learn (don't forget to include a username and password to use for login).</p>
+        
         </div>
     </div>
 
