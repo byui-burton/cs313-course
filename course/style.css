@@ -307,3 +307,28 @@ table#bh tr:nth-child(even) td {
   vertical-align: middle;
   padding: 8px;
 }
+
+div.tips:before {
+	content: "Instructor Tip: ";
+}
+
+div.tips {
+  background-color: rgb(230, 230, 230);
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;	
+  font-size:10pt;
+}
+
+
+/*******************************
+ * Code
+ *******************************/
+.code {
+    display: block;
+    unicode-bidi: embed;
+    font-family: monospace;
+    white-space: pre;
+    font-size: 10pt;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Preparation</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+    <h1>Setting Up Openshift</h1>
+        <h2>Overview</h2>
+        <p>For our hosting this semester we will be using OpenShift from RedHat, which is free for small applications. At OpenShift will we be able to create Web applications for both PHP (to use during the first half of the semester) and Java (to use during the second half). Please note that while other hosting options (such as those you may have used for other classes) will likely work for the PHP section of this course, they will most likely not support the Java work that we will do later on, so it is expected that everyone will set up and use an OpenShift application this semester.</p>
+        <p>As you begin working with OpenShift you will notice that they mention two things very frequently. First is a commandline tool called "rhc" (red hat client), and second is to use Git to deploy your pages to your OpenShift server. Unfortunately, both of these use the SSH protocol over port 22 which is not allowed by some restrictive firewalls. This is the case with some (and soon to be all) parts of the BYU-Idaho campus.</p>
+        <p>There is a way that we can get around this problem by setting up a Continuous Integration (CI) server that will automatically detect changes in a GitHub repository and deploy those changes to your server. This will require a some additional setup and configuration in the beginning, but then should be easy to use for the rest of the semester. Furthermore, CI servers are very common in industry, so even though we will not be using them extensively, getting even a little experience in this area is good thing.</p>
+        <h2>Instructions</h2>
+        <p>The following steps will help walk you through setting up an initial PHP application at OpenShift and deploying a "hello world" page to it using GitHub and Jenkins, an open source Continuous Integration server.</p>
+        <p>Please note that you have 3 free gears to use at OpenShift. In order to use Jenkins you will need one for your PHP application, one for Jenkins, and one temporary gear to build your application and deploy it. Thus it will take all three of your free gears. So if you have any other applications/gears you will need to delete them.</p>
+        <div>
+            <p> </p>
+            <p><b>Create a new PHP application at OpenShift</b></p>
+            <ol>
+                <li>
+                    <p>Create new account at OpenShift.com. Fill in your information and respond to the confirmation email.</p>
+                </li>
+                <li>
+                    <p>Log in, go to the applications section, and create a new application gear.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>Select "PHP 5.4" (not any other servers or frameworks with it, just PHP 5.4)</p>
+                    </li>
+                    <li>
+                        <p>On the configuration page, you will need to choose a name for this application and then a namesapce. The namespace will be shared by all your OpenShift applications and the application name is just for this one. For example, I chose "sburton" as my namespace, and "php" for my application, so it is named, "php-sburton.rhcloud.com"</p>
+                    </li>
+                    <li>
+                        <p>Select a "small gear" and No scaling. (If you don't you will not be able to complete some steps in future assignments.)
+                        </p>
+                    </li>
+                    <li>
+                        <p>Click Create application. When it finishes, click "continue to the application overview page"</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Verify that your site is up by opening your URL in a new tab. It should be something like:</p>
+                    <p><a href="http://php-sburton.rhcloud.com">http://php-sburton.rhcloud.com</a></p>
+                    <p>
+                        <a href="http://php-sburton.rhcloud.com"></a>When you go to this page, you should see: "Welcome to your PHP application on OpenShift" with a lot of other content about how to get set up.</p>
+                </li>
+            </ol>
+            <p><b>Create a new Jenkins Application at OpenShift and connect your PHP application to it.</b></p>
+            <ol>
+                <li>
+                    <p>Create new Jenkins application</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>At OpenShift, go to the Applications page.</p>
+                    </li>
+                    <li>
+                        <p>Click "Add application"</p>
+                    </li>
+                    <li>
+                        <p>Select "Jenkins Server"</p>
+                    </li>
+                    <li>
+                        <p>Choose a name for this application. (I left mine as "jenkins", so the complete name for mine will be: "jenkins-sburton.rhcloud.com")</p>
+                    </li>
+                    <li>
+                        <p>Then click create application and wait for the confirmation page.</p>
+                    </li>
+                    <li>
+                        <p><b>Make sure to record the username and password it gives you!!</b></p>
+                    </li>
+                    <li>
+                        <p>For me, sometimes pages like this spin away for a long time and never come back. If you click away to the applications page you can see that it did in fact finish. In many cases, this is ok, and you can continue on, but in this case, if you never get the confirmation page, you won't have the initial username and password it sets up. As a result, I deleted the Jenkins application and tried again if it didn't finish.</p>
+                    </li>
+                </ol>
+            </ol>
+            <ol start="2">
+                <li>
+                    <p>After creating the Jenkins app, return to the application page and click on your PHP application to configure it to work with Jenkins.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>Go to the application overview page for your PHP app.</p>
+                    </li>
+                    <li>
+                        <p>Under the "Continuous Integration" heading, select "Enable Jenkins"</p>
+                    </li>
+                    <li>
+                        <p>Make sure the Jenkins server name matches the one you just created, for example: "jenkins-sburton.rhcloud.com"</p>
+                    </li>
+                    <li>
+                        <p>Click "Add Jenkins". This will add a build job for your PHP application in Jenkins, (e.g., "php-build")</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Log into the Jenkins site in a browser</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>The url should be something like: <a href="https://jenkins-sburton.rhcloud.com">https://jenkins-sburton.rhcloud.com</a> (<b>note the s in https</b>)</p>
+                    </li>
+                    <li>
+                        <p>Log in using the credentials it gave you above ("admin" and an auto-generated password)</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Run a test build to verify that the Jenkins server is connected.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>Click on your application (e.g., "php-build"). This takes you to the overview page for this job.</p>
+                    </li>
+                    <li>
+                        <p>Click on "Build now" (on the left side).</p>
+                    </li>
+                    <ol>
+                        <li>
+                            <p>This should stage a build and if all goes well should refresh in a few minutes with information about build #1.</p>
+                        </li>
+                        <li>
+                            <p>The "build history" section may show "pending" for a minute while a new build executor is set up.</p>
+                        </li>
+                        <li>
+                            <p>Then you may see a status bar showing the progress going for your build.</p>
+                        </li>
+                        <li>
+                            <p>When it is done, you should see a #1 with the timestamp. If you click on the timestamp, it should take you to a details page with a list of all the artifacts and other information about the build. This means it worked!</p>
+                        </li>
+                    </ol>
+                    <li>
+                        <p>If this doesn't work, then there is a problem with how the two applications are communicating.</p>
+                    </li>
+                </ol>
+            </ol>
+            <p><b>Configure Jenkins to pull from your GitHub repository.</b></p>
+            <ol>
+                <li>
+                    <p>Log into Jenkins, and select your application (e.g., "php-build")</p>
+                </li>
+                <li>
+                    <p>Click "Configure" on the left side</p>
+                </li>
+                <li>
+                    <p>Find the URL of the Git repository under the "Source code management" section.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>It should be something like: ssh://54a4576bfcf933b42200008c@php-sburton.rhcloud.com/~/git/php.git</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Change this to be the URL of the repository you created at GitHub in the very beginning.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>For example:  <a href="https://github.com/sburton42/php-jenkins-test.git">https://github.com/sburton42/php-jenkins-test.git</a></p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Click "Save"</p>
+                </li>
+                <li>
+                    <p>Then click "Build now" as before.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>This time it should pull your index.html file from your GitHub repo.</p>
+                    </li>
+                    <li>
+                        <p>If you look at the list of artifacts this time, you should only see the index.html file from your GitHub repo.</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Verify that the new application is displayed by going to your site.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>For example: <a href="http://php-sburton.rhcloud.com">http://php-sburton.rhcloud.com</a></p>
+                    </li>
+                    <li>
+                        <p>You should see your Hello World page. Huzzah!!</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>At this point, we don't have any automatic build triggers, but it does allow you to get your content out to your PHP server by manually logging into Jenkins and clicking build.</p>
+                </li>
+            </ol>
+            <p><b>Configure Jenkins to automatically build when the GitHub repository is updated</b></p>
+            <ol>
+                <li>
+                    <p>Add the GitHub plugin to Jenkins</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>Log into your Jenkins server and go to the very top level dashboard page.</p>
+                    </li>
+                    <li>
+                        <p>Click "Manage Jenkins" on the left side</p>
+                    </li>
+                    <li>
+                        <p>Click "Manage Plugins"</p>
+                    </li>
+                    <li>
+                        <p>At first nothing shows under the "available" tab, because the list needs to be updated.</p>
+                    </li>
+                    <li>
+                        <p>Click the "Advanced" tab, scroll down to the bottom and click the "Check now" button on the bottom right.</p>
+                    </li>
+                    <li>
+                        <p>Once this has finished checking for updates, go back to the "updates center" and click on the "available" tab. This time there should be a ton of available plugins.</p>
+                    </li>
+                    <li>
+                        <p>Search for "GitHub Plugin" (e.g. use Ctrl+F). There will be a lot of different variants of GitHub Authentication and other syncing tools, you want to find the plain old, "GitHub Plugin" and select it.</p>
+                    </li>
+                    <li>
+                        <p>Check the box next to GitHub Plugin and choose "Install without restart"</p>
+                    </li>
+                    <ol>
+                        <li>
+                            <p>Several of these options were already installed, and I received a failure on "Git Client Plugin", but it didn't seem to give me any problems afterward.</p>
+                        </li>
+                    </ol>
+                </ol>
+                <li>
+                    <p>Configure the build to listen for GitHub updates</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>On your Jenkins server, select your application (e.g., "php-build")</p>
+                    </li>
+                    <li>
+                        <p>Click Configure</p>
+                    </li>
+                    <li>
+                        <p>Under the "Build triggers" section, you should now see a checkbox for "Build when a change is pushed to GitHub"</p>
+                    </li>
+                    <li>
+                        <p>Select this box and then click "Save"</p>
+                    </li>
+                </ol>
+                <li>
+                    <p>Add a hook to GitHub so that it notifies your Jenkins server when changes are made.</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>Log into GitHub and browse to your repository.</p>
+                    </li>
+                    <li>
+                        <p>Click "Settings" and select "Webhooks and Services"</p>
+                    </li>
+                    <li>
+                        <p>Under "Services" select "Add Service" and choose "Jenkins (GitHub plugin)" notice, NOT "Jenkins (Git plugin)"</p>
+                    </li>
+                    <li>
+                        <p>In the Jenkins hook url box, list the name of your server with "/github-webhook/" at the end.</p>
+                    </li>
+                    <ol>
+                        <li>
+                            <p>For example: <a href="https://jenkins-sburton.rhcloud.com/github-webhook/">https://jenkins-sburton.rhcloud.com/github-webhook/</a></p>
+                        </li>
+                        <li>
+                            <p>Please note the "s" in "https" (not "http"). It did not work for me, unless I had "https"</p>
+                        </li>
+                        <li>
+                            <p>Then click "Add service"</p>
+                        </li>
+                    </ol>
+                </ol>
+                <li>
+                    <p>Test the Hook</p>
+                </li>
+                <ol>
+                    <li>
+                        <p>Pull up your Jenkins server in a browser and select your application (e.g., php-build"). Watch and wait patiently.</p>
+                    </li>
+                    <li>
+                        <p>Make a change to your GitHub repository</p>
+                    </li>
+                    <ol>
+                        <li>
+                            <p>One simple way to do this is to pull up your index.html file at GitHub in a browser, click the edit pencil, and make your change right in the browser. (Be aware this could create a merge conflict that you will have to handle later on your computer.)</p>
+                        </li>
+                        <li>
+                            <p>This is a great way to test it, but once you do this, make sure you can also trigger the build by pushing a change to GitHub from the Git client on your local computer.</p>
+                        </li>
+                    </ol>
+                    <li>
+                        <p>On your Jenkins server you should see another build get staged (listed as "pending") and then eventually build.</p>
+                    </li>
+                    <li>
+                        <p>Once the build finishes, verify that your website shows the updated content (whatever change you made).</p>
+                    </li>
+                </ol>
+            </ol>
+        </div>
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
