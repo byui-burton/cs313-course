@@ -11,6 +11,7 @@
         <div id="content">
 
     <h1>Deploying Content to Openshift</h1>
+        <p>Before starting these instructions, make sure you have <a href="./313-01-prepare_openshift.html">Set up your OpenShift application</a>.
         <h2>Background</h2>
         <p>The easiest way to deploy content to OpenShift is to use Git. These steps will walk you through setting up Git and using it to deploy to your server. </p>
 
@@ -85,6 +86,11 @@ git clone ssh://xxxxxxx@php-sburton.rhcloud.com/~/git/php.git
                 <li>In your terminal window, type "git status" to show the changes have been made. In this case, it should show that have you deleted the index.php page, and create a new index.html page (that is currently not-tracked).</li>
 
                 <li>Add your index.html page to be tracked by Git (<code>git add index.html</code>).</li>
+
+                <li>Tell Git that you want to remove that index.php page from your repository with the command: <code>git rm index.php</code>
+
+                <li>Now, type "git status" again to see the changes that are ready to commit.</li>
+
                 <li>Commit your changes to your local Git repository (<code>git commit -m "Adding my hello world page"</code>)</li>
 
                 <div class="tips">If you forget to include a message, Git will set you to its default text editor to create one. This might be VIM, which you may or may not be familiar with. If it is and you "just want to get out of it!" hit ESC, the type ":q!" to quit without saving changes. You will not have added a message, so your commit will not have gone through, but at least you have gotten out alive! :-).</div>
@@ -101,6 +107,8 @@ git clone ssh://xxxxxxx@php-sburton.rhcloud.com/~/git/php.git
 
             </ol>
                 
+        <h3>Pushing your code to GitHub</h3>
+        <p>Next up: <a href="./313-01-prepare_github.html">Pushing your code to GitHub</a>.
 
         </div>
     </div>

@@ -12,41 +12,44 @@
 
 
         <h1>Setting Up Github</h1>
+        <p>Before starting these instructions, make sure you have <a href="./313-01-prepare_openshift.html">Set up your OpenShift application</a> and <a href="./313-01-prepare_git_to_openshift.html">used Git to deploy content to your server</a>.
         <h2>Overview</h2>
-        <div>
-            <p>In this course we assume you already have basic experience with Git from your earlier courses. If you do not, you will still be ok, but you will need to come up to speed on your own. Here is some helpful information:
-            </p>
-                <ul>
-                    <li><a href="https://www.youtube.com/watch?v=0fKg7e37bQE" target="_blank">An introductory tutorial on YouTube</a></li>
-                    <li><a href="http://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank">The official documentation</a> - (It's actually well-written and relatively easy to follow!)</li>
-                </ul>
 
-            <p>In order to share our code with one another (so we can get ideas from each other) and also, to make the code available to the instructor for feedback, we also want to push our code to a public repository. (Also, later in the semester, we will be working on team projects and this will facilitate sharing code with teammates.)</p>
-            <p>Thus, we are going to set up a public repository at GitHub and configure our server to automatically pull and deploy changes when they are committed to GitHub.</p>
+            <p>In order to share our code with one another (so you can get ideas from each other) and also, to make the code available to the instructor for feedback, you'll also need to push our code to a public repository. (Also, later in the semester, you will be working on team projects and this will facilitate sharing code with teammates.)</p>
+            
+            <p>Thus, in addition to having a Git repository on your local computer and one at OpenShift that you deploy to, you will also set one up at GitHub and push your content to it as well. We we add GitHub as a second "remote" server for our local repository so that after committing our code, we will have the ability to push it to either OpenShift or GitHub.</p>
+
+            <p>There are ways that Git can be configured to automatically push to both remotes, but a more simplistic way is to have two separate remotes, and then you have the freedom to push to one or the other whenever you like.</p>
+
             <h2>Instructions</h2>
             <div>
-                <p>The following steps will help you set up a GitHub repository and push a simple Hello World page to it. (These assume you are using the command line for Git; you are welcome to use a GUI if you would like, but it will not be discussed here.):</p>
                 <ol>
-                    <li>Go to GitHub.com and sign up for a new account if you haven't already.</li>
-                    <li>On GitHub, create a new repository, and choose a name for it (e.g., cs313php).</li>
-                    <li>After creating the repository, it should give you a URL to use, for example:&nbsp;https://github.com/sburton42/cs313php.git
+                    <li>Go to GitHub.com and sign up for a new account if you have not done so already. If you have an account from past projects or classes, it will work great for this course.</li>
+                    
+                    <li>At GitHub, create a new repository, and choose a name for it (e.g., cs313-php). Leave it public, and don't initialize it with anything (even a readme or .gitignore)--it should be left completely blank.</li>
+
+                    <li>After creating the repository, it should give you a URL to use, for example: <code>https://github.com/sburton42/cs313-php.git</code>
                     </li>
-                    <li>On the command line (GitBash on Windows), change to parent directory of where you want project to be.</li>
-                    <li>Clone your new (likely empty) repository, e.g. "git clone https://github.com/sburton42/cs313php.git" (substituting your own username and repository name of course)</li>
-                    <li>This should create a subdirectory with the same name as your repository. Change into that directory.</li>
-                    <li>Create a new index.html page in this directory with your editor of choice. This is a simple page that just needs to display "Hello World".</li>
-                    <li>Now add your page to your local git repository, commit it, and push it to GitHub. For example:</li>
-                    <ol>
-                        <li>git add index.html</li>
-                        <li>git commit -m "adding hello world page"</li>
-                        <li>git push origin master</li>
-                    </ol>
-                    <li>Verify that your code is at GitHub, by browsing to the repository on GitHub.com.</li>
-                </ol>The next step is to set up your OpenShift server and connect it to GitHub. See:&nbsp;<a href="313-01-prepare_openshift.html">Setting Up OpenShift</a><a></a></div>
 
+                    <li>On the command line (GitBash on Windows), change to the directory of the repository that you created to push your content to OpenShift (e.g., a php directory).</li>
 
+                    <li>Type "git remote -v" to list all the available remotes. At this point you should only see your OpenShift remote listed as "origin".</li>
 
+                    <li>Use "git remote add" to add another remote. You first give an alias (e.g. GitHub) and then the URL. For example (substituting your own GitHub URL of course):
+<div class="code">git remote add github https://github.com/sburton42/cs313-php.git</div>
+                    </li>
 
+                    <li>Now type, "git remote -v" again and this time you should see the origin remote (OpenShift) and the GitHub one.</li>
+
+                    <li>Push your latest changes to GitHub, by specifying the alias, "git push github master".</li>
+
+                    <li>Verify that your code is at GitHub, by browsing to the repository on GitHub.com (refresh the page if necessary).</li>
+
+                    <li>Now that you have set up both remotes, you can push to either one, by specifying the alias, for example "git push github master" or "git push origin master".</li>
+            </ol>
+
+            <h3>Submission</h3>
+            <p>Next up: <a href="../prove/313-01-prove-submit.html">Submit your assignment</a>.
         </div>
     </div>
 
