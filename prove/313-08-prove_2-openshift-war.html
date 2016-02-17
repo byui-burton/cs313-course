@@ -11,12 +11,16 @@
         <div id="content">
 
 
-        <h1>Option #2</h1>
-        <p>Option #2 - Build a WAR file and deploy it directly to OpenShift</p>
+        <h1>Deploying a WAR File</h1>
+        
         <p>1. After creating your application gear at OpenShift, you will need to set up a public key / private key pair to push code directly to it using Git. On the application page, on the right side under source code, you will see a link to upload your public key file.</p>
+
         <p>Here is a help page on generating SSH keys from GitHub: https://help.github.com/articles/generating-ssh-keys (You will want to follow these steps, except at the end, instead of uploading your key to GitHub, you will paste it into the form at OpenShift)</p>
+
         <p>Alternatively, here is a help page on using putty to setup the ssh, and create public/private keys from OpenShift: https://www.openshift.com/developers/install-and-setup-putty-ssh-client-for-windows</p>
+
         <p>2. You can now get the data from OpenShift by doing a git clone such as:</p>
+        
         <p>git clone ssh://xxxx@php-sburton.rhcloud.com/~/git/php.git/</p>
         <p>(replacing the appropriate parts with your information). This will pull the data down to your own machine. I would recommend doing this to a different directory than your NetBeans project. You can then make your changes, do a "git add", and then simply type:</p>
         <p>git push</p>
