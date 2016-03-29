@@ -9,7 +9,7 @@ After completing the assignment, please answer the questions in this text file a
 3. Copy and paste the URL for your source code repository (e.g., GitHub):
 
 
-4. List what your planned Milestone accomplishments were (e.g. from your proposal).</p>
+4. List what your planned Milestone accomplishments were (e.g. from your proposal).
 
 
 5. Describe what you have done this week, and how it meets, falls short of, or is different than your milestone, and why.
