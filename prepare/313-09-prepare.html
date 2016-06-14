@@ -51,7 +51,7 @@
         <p><b>Getting get/post variables in Servlets:</b></p>
         <ul>
             <li>
-                <p>String password = request.getParameter(&ldquo;password&rdquo;);</p>
+                <p>String password = request.getParameter("password");</p>
             </li>
         </ul>
         <p><b>Getting get/post variables in JSPs:</b></p>
@@ -63,7 +63,7 @@
         <p><b>Setting a session variable in a Servlet:</b></p>
         <ul>
             <li>
-                <p>request.getSession().setAttribute(&ldquo;userId&rdquo;, &ldquo;test123&rdquo;);</p>
+                <p>request.getSession().setAttribute("userId", "test123");</p>
             </li>
         </ul>
         <p><b>Getting a session variable in a JSP:</b></p>
@@ -75,7 +75,7 @@
         <p><b>Transferring control from a servlet to a JSP to produce the content for the response:</b></p>
         <ul>
             <li>
-                <p>request.getRequestDispatcher(&ldquo;/myPage.jsp&rdquo;).forward(request, response);</p>
+                <p>request.getRequestDispatcher("/myPage.jsp").forward(request, response);</p>
             </li>
         </ul>
         <p><b>Getting the current directory of a servlet (on the server), and opening a file for output in that dir:</b></p>
