@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Engineering II - Preparation</title>
+    <link rel="stylesheet" type="text/css" href="../course/style.css" />
+</head>
+
+<body>
+    <div id="frame"><img src="../course/cs313.png" border="0" alt="Web Engineering II CS 313" title="Web Engineering II CS 313" width="100%" />
+        <div id="content">
+
+    <h1>Deploying Content to Heroku</h1>
+        <p>Before starting these instructions, make sure you have <a href="./313-01-prepare_heroku.html">Set up your Heroku application</a>.
+        <h2>Background</h2>
+        <p>The easiest way to deploy content to Heroku is to use Git. These steps will walk you through setting up Git and using it to deploy to your server. </p>
+
+        <p>In this course we assume you already have basic experience with Git from your earlier courses. If you do not, you will still be ok, but you will need to come up to speed on your own. Here is some helpful information:
+        </p>
+
+        <ul>
+            <li><a href="https://www.youtube.com/watch?v=0fKg7e37bQE" target="_blank">An introductory tutorial on YouTube</a></li>
+            <li><a href="http://git-scm.com/book/en/v2/Getting-Started-Git-Basics" target="_blank">The official documentation</a> - (It's actually well-written and relatively easy to follow!)</li>
+        </ul>
+
+        <h2>Instructions</h2>
+
+        <p>The following steps will help walk you through setting up Git on your computer and using it to connect to Heroku and deploy a Hello World page. Later we will also use get to push our source code to a public source control server (GitHub). This can be a little bit confusing at first because we will have three separate Git repositories:</p>
+
+        <ol>
+            <li><strong>On your local computer</strong> - You have to commit changes here, before you can push them anywhere else.</li>
+            <li><strong>At Heroku</strong> - We push here to deploy our application.</li>
+            <li><strong>At GitHub</strong> - We push here to share our code with our classmates and the instructor.</li>
+        </ol>
+
+        <p>In the previous steps when you issued the "git clone" command, this created a new Git repository on your local system. Then, when you added the "remote" for Heroku, this pointed it to a git repository on their system. Issuing the "git push heroku master" command essentially said, sync up the latest changes from my local system to Heroku.</p>
+
+        <p>Thus, when we want to make additional changes, we change the local copy, commit it to the local repository and then, push it to Heroku.</p>
+            
+        <h3>Deploying custom content to your site</h3>
+
+            <ol>
+                <li>On your local computer, in a terminal window, go to the directory where you cloned the repository earlier.</li>
+                <li>Change into the "web" subdirectory. This is the root directory of your website. There is an index.php file already in this directory. This is the content that was loaded when you went to your page in a browser.</li>
+
+                <li>Create your own hello.html page (using any editor of your choice) that displays the text Hello World.</li>
+
+                <li>In your terminal window, type "git status" to show the changes have been made. In this case, it should show that you have created a new hello.html page (that is currently not-tracked).</li>
+
+                <li>Add your hello.html page to be tracked by Git (<code>git add hello.html</code>).</li>
+
+<!--                 <li>Tell Git that you want to remove that index.php page from your repository with the command: <code>git rm index.php</code>
+ -->
+                <li>Now, type "git status" again to see the changes that are ready to commit.</li>
+
+                <li>Commit your changes to your local Git repository (<code>git commit -m "Adding my hello world page"</code>)</li>
+
+                <div class="tips">If you forget to include a message, Git will set you to its default text editor to create one. This might be VIM, which you may or may not be familiar with. If it is and you "just want to get out of it!" hit ESC, the type ":q!" to quit without saving changes. You will not have added a message, so your commit will not have gone through, but at least you have gotten out alive! :-).</div>
+
+                <li>Now, your changes are in your local Git repository, but we still need to push them to Heroku. Do this by "pushing" them with the command "git push heroku master".</li>
+                
+                <li>When you push code to Heroku, it automatically kicks off a build that will do any actions necessary to deploy your site. You will set an output of these actions in your terminal window.</li>
+
+                <li>Verify that your new hello world page is up. You can run the command "heroku open" to go to the default page, then add "hello.html" to the end of the URL. (It should be something like: https://fierce-hamlet-90863.herokuapp.com/hello.html).</li>
+
+                <li>Celebrate. You have just pushed your first content to your site! Throughout the semester you will repeat this process many times. Put new content into this directory, "git add", "git commit" and "git push".</li>
+
+                <div class="tips">You are more than welcome to use any GUI tools for Git that you would like. I find them to be helpful when everything is going well, but when something weird happens, going to the terminal window and running a "git status" command usually helps me track down problems better than anything else.</div>
+
+            </ol>
+                
+        <h3>Pushing your code to GitHub</h3>
+        <p>Next up: <a href="./313-01-prepare_github.html">Pushing your code to GitHub</a>.
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

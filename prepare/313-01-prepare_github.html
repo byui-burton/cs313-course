@@ -12,14 +12,14 @@
 
 
         <h1>Setting Up Github</h1>
-        <p>Before starting these instructions, make sure you have <a href="./313-01-prepare_openshift.html">Set up your OpenShift application</a> and <a href="./313-01-prepare_git_to_openshift.html">used Git to deploy content to your server</a>.
+        <p>Before starting these instructions, make sure you have <a href="./313-01-prepare_heroku.html">Set up your Heroku application</a> and <a href="./313-01-prepare_git_to_heroku.html">used Git to deploy content to the cloud</a>.
         <h2>Overview</h2>
 
             <p>In order to share our code with one another (so you can get ideas from each other) and also, to make the code available to the instructor for feedback, you'll also need to push our code to a public repository. (Also, later in the semester, you will be working on team projects and this will facilitate sharing code with teammates.)</p>
             
-            <p>Thus, in addition to having a Git repository on your local computer and one at OpenShift that you deploy to, you will also set one up at GitHub and push your content to it as well. We we add GitHub as a second "remote" server for our local repository so that after committing our code, we will have the ability to push it to either OpenShift or GitHub.</p>
+            <p>Thus, in addition to having a Git repository on your local computer and one at Heroku that you deploy to, you will also set one up at GitHub and push your content to it as well. We we add GitHub as a second "remote" server for our local repository so that after committing our code, we will have the ability to push it to either Heroku or GitHub.</p>
 
-            <p>There are ways that Git can be configured to automatically push to both remotes, but a more simplistic way is to have two separate remotes, and then you have the freedom to push to one or the other whenever you like.</p>
+            <div class="tips">There are ways that Git can be configured to automatically push to both remotes, but a more simplistic way is to have two separate remotes, and then you have the freedom to push to one or the other whenever you like.</div>
 
             <h2>Instructions</h2>
             <div>
@@ -31,21 +31,21 @@
                     <li>After creating the repository, it should give you a URL to use, for example: <code>https://github.com/sburton42/cs313-php.git</code>
                     </li>
 
-                    <li>On the command line (GitBash on Windows), change to the directory of the repository that you created to push your content to OpenShift (e.g., a php directory).</li>
+                    <li>On the command line (GitBash on Windows), change to the directory of the repository that you created to push your content to Heroku.</li>
 
-                    <li>Type "git remote -v" to list all the available remotes. At this point you should only see your OpenShift remote listed as "origin".</li>
+                    <li>Type "git remote -v" to list all the available remotes. At this point you should only see your Heroku remote listed and possibly the one you initially cloned from.</li>
 
-                    <li>Use "git remote add" to add another remote. You first give an alias (e.g. GitHub) and then the URL. For example (substituting your own GitHub URL of course):
+                    <li>Use "git remote add" to add another remote. You first give an alias (e.g. github) and then the URL. For example (substituting your own GitHub URL of course):
 <div class="code">git remote add github https://github.com/sburton42/cs313-php.git</div>
                     </li>
 
-                    <li>Now type, "git remote -v" again and this time you should see the origin remote (OpenShift) and the GitHub one.</li>
+                    <li>Now type, "git remote -v" again and this time you should see the heroku remote and the GitHub one.</li>
 
                     <li>Push your latest changes to GitHub, by specifying the alias, "git push github master".</li>
 
                     <li>Verify that your code is at GitHub, by browsing to the repository on GitHub.com (refresh the page if necessary).</li>
 
-                    <li>Now that you have set up both remotes, you can push to either one, by specifying the alias, for example "git push github master" or "git push origin master".</li>
+                    <li>Now that you have set up both remotes, you can push to either one, by specifying the alias, for example "git push github master" or "git push heroku master".</li>
             </ol>
 
             <h3>Submission</h3>
